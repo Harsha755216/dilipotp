@@ -1,0 +1,26 @@
+<form #g="ngForm" (ngSubmit)="submit(g.value)">
+<div class="form">
+    <div class="form-group">
+       <label for="d">Enter tghe color</label>
+       <input type="text" name="d" class="form-control" id="d" [(ngModel)]="d">
+    </div>
+</div>
+
+<div class="form">
+      <div class="form-group">
+          <label for="e">Enter tghe color</label>
+          <input type="text" name="e" class="form-control" id="e" [(ngModel)]="e">
+      </div>
+</div>
+
+
+<div class="form">
+          <div class="form-group">
+              <label for="f">Enter tghe color</label>
+              <input type="text" name="f" class="form-control" id="f" [(ngModel)]="f">
+          </div>
+</div>        
+
+
+<button type="submit" class="btn btn-primary">submit</button> 
+</form>

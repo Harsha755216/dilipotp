@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'color';
+
+  n:string[]=[];
+  a:string="";
+  add(a):void{
+    this.a=a;
+    this.n.push(a);
+    this.a=" ";
+  }
+  delete(x):void{
+    this.n.splice(x,1);
+  }
 }
