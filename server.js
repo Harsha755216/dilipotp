@@ -9,33 +9,38 @@ app.use(d.json());
 
 var dbo;
 
-mongo.connect('mongodb://HarshaVardhan:1qaz2WSX@ds231070.mlab.com:31070/colordb', (err, db) => {
+mongo.connect('mongodb://HarshaVardhan:1qaz2WSX@ds213183.mlab.com:13183/studentdb', (err, db) => {
     app.use(ex.static(path.join(__dirname, 'dist/COLOR')));
     if (err) throw err;
-    dbo = db.db('colordb');
+    dbo = db.db('database');
 
 })
 
-app.post('/angular',(req,res)=>
-{
+app.post('/log-in', (req, res) => {
     console.log(req.body);
-    dbo.collection('angular').insertOne(req.body,(err,data)=>
-    {
-        if(err) throw err;
-        res.send(data);
+
+    dbo.collection('').find({ $and: [{ username: req.body.username, password: req.body.password }] }).toArray((err, data) => {
+        if (err) throw err;
+        if (data[0] != null)
+
+            res.send(data);
+        else
+            res.send(data);
+    })
+});
+
+
+app.post('//stud-log', (req, res) => {
+    dbo.collection('stud').find({ $and: [{ student: req.body.user, paw: req.body.pw }] }).toArray((err, data) => {
+        if (err) throw err;
+        if (data[0] != null)
+            res.send(data);
+        else
+            res.send(data);
     })
 })
 
-app.get('/html',(req,res)=>
-{
-    dbo.collection('html').find().toArray((err,data)=>
-    {
-        if(err) throw err;
-        res.send(data);
-    })
-})
-
-const port = 6000;
+const port = 5000;
 app.listen(process.env.PORT || 8080, () => {
     console.log("server started");
 })

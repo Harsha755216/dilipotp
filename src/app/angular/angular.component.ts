@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceService } from '../service.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-angular',
@@ -8,19 +10,28 @@ import { ServiceService } from '../service.service';
 })
 export class AngularComponent implements OnInit {
 
-  data:any[]=[];
-  constructor(private ds:ServiceService) { }
+ 
+  constructor(private ds:ServiceService,private router:Router) { }
 
   ngOnInit() {
    
   }
 
-  submit(data:any[])
-  {
-    this.ds.setdata(data).subscribe(r=>
-      {
-        alert(r);
-      })
+  user: String = "";
+  pw: String = "";
+  onSubmit(data) {
+    this.ds.sent(data).subscribe(res => {
+    
+      if (res[0] != null) {
+        alert("login successfull");
+        this.router.navigate(['/html']);
+
+
+      }
+      else {
+        alert("login failed");
+      }
+    });
   }
  
 }

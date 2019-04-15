@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import {RouterModule} from '@angular/router';
-import { AngularComponent } from './angular/angular.component';
+
 import { HtmlComponent } from './html/html.component';
+import { AngularComponent } from './angular/angular.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      {path:"angular",component:AngularComponent},
-      {path:"html",component:HtmlComponent}
+      
+      {path:"",component:AngularComponent},
+      {path:"angular",component:HtmlComponent,children:[{path:"angular",redirectTo:"/angular"},
+    ]},
+    {path:"register",component:RegisterComponent}
     
     ])
   ],
